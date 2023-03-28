@@ -15,21 +15,24 @@ const LoginComponent = () => {
     password: ""
 }
 // state
-const [userDetails, setUserDetails] = useState(initialState)
-
+const [userDetails, setUserDetails] = useState(initialState)  
 
 const dispatch = useDispatch()
 const {isloading, errorWays, userData,} = useSelector((state) => state.login)
 const router = useRouter()
 
+
+
 useEffect(() => {
-  localStorage.getItem(userData)
   const timer = setTimeout(() => console.log('Navigating to dashboard'), 5000);
   if(userData.user) {
       router.push("/dashboard")
    }
    return () => clearTimeout(timer);  
 },[userData,router])
+
+
+
 
 const {email, password } = userDetails
 
